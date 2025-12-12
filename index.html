@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>We Cool The World</title>
 <style>
+
+        /* Estilos que se aplican a partir de 768px hacia abajo (Móvil, tablet vertical) */
+        @media (max-width: 768px) {
+            /* Regla 1: Asegura que todos los elementos de contenido (imágenes, videos) 
+               no sean más anchos que la pantalla del móvil. */
+            img, video {
+                max-width: 100%; 
+                height: auto; 
+            }
+            
+            /* Regla 2: Reduce el tamaño de los encabezados para móvil */
+            h1 {
+                font-size: 1.5em; 
+            }
+            h2 {
+                font-size: 1.2em; 
+            }
+
+            /* Regla 3: Si usaste un ancho fijo para un contenedor, haz que sea 100% en móvil */
+            .contenedor-principal {
+                width: 100%; 
+                padding: 10px; /* Agrega un poco de margen interno */
+            }
+            
+            /* (Añade más reglas aquí según necesites) */
+        }
   body, html {
     margin: 0;
     padding: 0;
