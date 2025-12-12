@@ -53,6 +53,15 @@
     cursor: pointer;
     transition: transform 1s, opacity 1s;
   }
+	#lettersImage {
+    position: absolute;
+    width: 300px; /* ajustá según tu imagen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s;
+}
   #backgroundVideo {
     position: fixed;
     top: 0;
@@ -84,16 +93,26 @@
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
 <div id="releaseDate">DECEMBER    19TH    2025</div>
+<!-- Imagen PNG con letras -->
+<img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 
 <script>
 const logo = document.getElementById('logoVideo');
 const background = document.getElementById('backgroundVideo');
 const releaseDate = document.getElementById('releaseDate');
+const lettersImage = document.getElementById('lettersImage');
+
+window.addEventListener('load', () => {
+    lettersImage.style.opacity = 1;
+});
 
 logo.addEventListener('click', () => {
     // animación del logo
     logo.style.transform = 'scale(3)';
     logo.style.opacity = '0';
+
+ // fade-out de la imagen PNG
+    lettersImage.style.opacity = 0;
     
     // esperar la animación antes de mostrar el fondo
     setTimeout(() => {
