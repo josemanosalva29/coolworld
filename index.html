@@ -60,14 +60,17 @@
    #releaseDate {
     position: absolute;
     top: 20px;
+	left: 50%;
+	transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
-    font-size: 36px;
+    font-size: 60px;
     font-family: 'MADE TOMMY', ExtraBold; /* Tipografía personalizada */
     color: #1d4ec2; /* Color específico */
     display: none;
     opacity: 100;
     animation: fadeIn 2s forwards; /* Animación de entrada */
+	letter-spacing: -160px;
   }
 </style>
 </head>
@@ -75,7 +78,7 @@
 
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
-<div id="releaseDate">First cool's video release date: DECEMBER 19TH 2025</div>
+<div id="releaseDate">DECEMBER 19TH 2025</div>
 
 <script>
 const logo = document.getElementById('logoVideo');
