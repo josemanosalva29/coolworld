@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Cool The World</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    background: white;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #logoVideo {
+    width: 200px; /* tamaño más pequeño */
+    cursor: pointer;
+    transition: transform 1s, opacity 1s;
+  }
+  #backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* oculto al inicio */
+    z-index: -1;
+  }
+  #releaseDate {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-family: sans-serif;
+    color: white;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted></video>
+<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
+<div id="releaseDate">First cool's video release date: DECEMBER 19TH 2025</div>
+
+<script>
+const logo = document.getElementById('logoVideo');
+const background = document.getElementById('backgroundVideo');
+const releaseDate = document.getElementById('releaseDate');
+
+logo.addEventListener('click', () => {
+    // animación del logo
+    logo.style.transform = 'scale(3)';
+    logo.style.opacity = '0';
+    
+    // esperar la animación antes de mostrar el fondo
+    setTimeout(() => {
+        logo.style.display = 'none';
+        background.style.display = 'block';
+        releaseDate.style.display = 'block';
+    }, 1000); // 1 segundo coincide con la transición
+});
+</script>
+
+</body>
+</html>
