@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>We Cool The World</title>
+   <link rel="icon" type="image/png" href="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/profileeea-Photoroom.png">
 <style>
 @font-face {
     font-family: 'Made Tommy';
@@ -13,32 +13,7 @@
     font-style: normal;
 }
 
-        /* Estilos que se aplican a partir de 768px hacia abajo (Móvil, tablet vertical) */
-        @media (max-width: 768px) {
-            /* Regla 1: Asegura que todos los elementos de contenido (imágenes, videos) 
-               no sean más anchos que la pantalla del móvil. */
-            img, video {
-                max-width: 100%; 
-                height: auto; 
-            }
-            
-            /* Regla 2: Reduce el tamaño de los encabezados para móvil */
-            h1 {
-                font-size: 1.5em; 
-            }
-            h2 {
-                font-size: 1.2em; 
-            }
-
-            /* Regla 3: Si usaste un ancho fijo para un contenedor, haz que sea 100% en móvil */
-            .contenedor-principal {
-                width: 100%; 
-                padding: 10px; /* Agrega un poco de margen interno */
-            }
-            
-            /* (Añade más reglas aquí según necesites) */
-        }
-  body, html {
+body, html {
     margin: 0;
     padding: 0;
     background: white;
@@ -47,54 +22,66 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  #logoVideo {
-    width: 200px; /* tamaño más pequeño */
+}
+
+#logoVideo {
+    width: 200px;
     cursor: pointer;
     transition: transform 1s, opacity 1s;
-  }
-	#lettersImage {
+    z-index: 2;
+}
+
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    z-index: 1;
+}
+
+#releaseDate {
     position: absolute;
-    width: 300px; /* ajustá según tu imagen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Made Tommy', sans-serif;
+    font-weight: 800;
+    font-size: 60px;
+    color: #ffffff;
+    display: none;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    letter-spacing: -10px;
+    text-align: center;
+    z-index: 3;
+}
+
+#lettersImage {
+    position: absolute;
+    width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 1s;
+    pointer-events: none;
+    z-index: 2;
 }
-  #backgroundVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-    display: none; /* oculto al inicio */
-    z-index: -1;
-  }
-   #releaseDate {
-    position: absolute;
-    top: 400px;
-	left: 50px;
-    width: 100%;
-    text-align: center;
-    font-size: 60px;
-    font-family: 'MADE TOMMY ExtraBold', sans-serif; /* Tipografía personalizada */
-    color: #ffffff; /* Color específico */
-    display: none;
-    opacity: 100;
-    animation: fadeIn 2s forwards; /* Animación de entrada */
-	letter-spacing: -10px;
-  }
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
 </style>
 </head>
 <body>
 
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
-<div id="releaseDate">DECEMBER    19TH    2025</div>
-<!-- Imagen PNG con letras -->
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
+<div id="releaseDate">DECEMBER 19TH 2025</div>
 
 <script>
 const logo = document.getElementById('logoVideo');
@@ -102,24 +89,23 @@ const background = document.getElementById('backgroundVideo');
 const releaseDate = document.getElementById('releaseDate');
 const lettersImage = document.getElementById('lettersImage');
 
+// Fade-in inicial de la imagen PNG
 window.addEventListener('load', () => {
     lettersImage.style.opacity = 1;
 });
 
+// Al hacer click en el logo
 logo.addEventListener('click', () => {
-    // animación del logo
-    logo.style.transform = 'scale(3)';
-    logo.style.opacity = '0';
+    logo.style.transform = 'scale(3.5)';
+    logo.style.opacity = 0;
 
- // fade-out de la imagen PNG
-    lettersImage.style.opacity = 0;
-    
-    // esperar la animación antes de mostrar el fondo
+    lettersImage.style.opacity = 0; // fade-out
+
     setTimeout(() => {
         logo.style.display = 'none';
         background.style.display = 'block';
         releaseDate.style.display = 'block';
-    }, 1000); // 1 segundo coincide con la transición
+    }, 1000);
 });
 </script>
 
