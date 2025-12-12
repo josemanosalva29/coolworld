@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>We Cool The World</title>
-   <link rel="icon" type="image/png" href="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Icono.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/favicon.png">
+
+<!-- Tipografía Made Tommy -->
 <style>
 @font-face {
     font-family: 'Made Tommy';
@@ -42,6 +46,18 @@ body, html {
     z-index: 1;
 }
 
+#lettersImage {
+    position: absolute;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+    z-index: 2;
+}
+
 #releaseDate {
     position: absolute;
     top: 50%;
@@ -59,18 +75,27 @@ body, html {
     z-index: 3;
 }
 
-#lettersImage {
+#countdown {
     position: absolute;
-    width: 450px;
-    top: 50%;
+    top: 41%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    font-family: 'Warownia', sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+    display: none;
     opacity: 0;
-    transition: opacity 1s;
-    pointer-events: none;
-    z-index: 2;
+    animation: fadeIn 2s forwards;
+    letter-spacing: -0px;
+    text-align: center;
+    display: none;
+    z-index: 4;
 }
 
+/* Espaciado entre días, horas, minutos y segundos */
+#time span {
+    margin: 40px; /* espacio horizontal */
+}
 @keyframes fadeIn {
     to { opacity: 1; }
 }
@@ -78,26 +103,60 @@ body, html {
 </head>
 <body>
 
+<!-- Videos -->
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
+
+<!-- Imagen PNG con letras -->
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
-<div id="releaseDate">DECEMBER 19TH 2025</div>
+
+<!-- Release date -->
+<div id="releaseDate">FOR   START   COOLING   YOUR   WORLD</div>
+
+<!-- Contador -->
+<div id="countdown"></div>
 
 <script>
 const logo = document.getElementById('logoVideo');
 const background = document.getElementById('backgroundVideo');
 const releaseDate = document.getElementById('releaseDate');
 const lettersImage = document.getElementById('lettersImage');
+const countdown = document.getElementById('countdown');
 
 // Fade-in inicial de la imagen PNG
 window.addEventListener('load', () => {
     lettersImage.style.opacity = 1;
 });
 
+// Contador regresivo hasta 19 de diciembre 2025 7pm
+function startCountdown() {
+    countdown.style.display = 'block';
+    const targetDate = new Date("December 19, 2025 19:00:00").getTime();
+
+    const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            countdown.textContent = "CHECK HOW WE COOL THE WORLD";
+            clearInterval(interval);
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdown.textContent = `${days} days     ${hours} hours     ${minutes} minutes     ${seconds} seconds`; LEFT
+    }, 1000) ; 
+}
+
 // Al hacer click en el logo
 logo.addEventListener('click', () => {
-    logo.style.transform = 'scale(3.5)';
+    logo.style.transform = 'scale(3)';
     logo.style.opacity = 0;
+
 
     lettersImage.style.opacity = 0; // fade-out
 
@@ -105,6 +164,7 @@ logo.addEventListener('click', () => {
         logo.style.display = 'none';
         background.style.display = 'block';
         releaseDate.style.display = 'block';
+        startCountdown(); // Arrancar contador cuando aparece el fondo
     }, 1000);
 });
 </script>
