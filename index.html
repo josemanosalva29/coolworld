@@ -4,11 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>We Cool The World</title>
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Icono.png?v=1">
-
-<!-- Tipografía Made Tommy -->
+   <link rel="icon" type="image/png" href="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Icono.png">
 <style>
 @font-face {
     font-family: 'Made Tommy';
@@ -37,13 +33,31 @@ body, html {
 
 #backgroundVideo {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0%;
+    left: 0%;
     width: 100%;
     height: 100%;
+    transform: translate(0%, 0%);
     object-fit: cover;
     display: none;
     z-index: 1;
+}
+
+#releaseDate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Made Tommy', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #ffffff;
+    display: none;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    letter-spacing: 0px;
+    text-align: center;
+    z-index: 3;
 }
 
 #lettersImage {
@@ -57,64 +71,98 @@ body, html {
     pointer-events: none;
     z-index: 2;
 }
-
-#releaseDate {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Made Tommy', sans-serif;
-    font-weight: 800;
-    font-size: 60px;
-    color: #ffffff;
-    display: none;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-    letter-spacing: -10px;
-    text-align: center;
-    z-index: 3;
-}
-
 #countdown {
     position: absolute;
-    top: 41%;
+    top: 45%;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Warownia', sans-serif;
-    font-size: 48px;
+    font-family: 'Made Tommy', sans-serif;
+    font-size: 25px;
     color: #ffffff;
-    display: none;
-    opacity: 0;
     animation: fadeIn 2s forwards;
-    letter-spacing: -0px;
+    letter-spacing: -5Wpx;
     text-align: center;
     display: none;
-    z-index: 4;
-}
-
-/* Espaciado entre días, horas, minutos y segundos */
-#time span {
-    margin: 40px; /* espacio horizontal */
+    z-index: 3;
 }
 @keyframes fadeIn {
     to { opacity: 1; }
 }
+
+#directors {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Made Tommy', sans-serif;
+    z-index: 4;
+    text-align: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+#directors.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Botón */
+#directorsBtn {
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+/* Menú oculto */
+#directorsMenu {
+    margin-top: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Menú visible */
+#directorsMenu.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Opciones */
+.directorOption {
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.directorOption:hover {
+    text-decoration: underline;
+}
+
 </style>
 </head>
 <body>
 
-<!-- Videos -->
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
-<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/background.mp4" autoplay muted loop></video>
-
-<!-- Imagen PNG con letras -->
+<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Forwebsite.mp4" autoplay muted loop></video>
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
-
-<!-- Release date -->
-<div id="releaseDate">FOR   START   COOLING   YOUR   WORLD</div>
-
-<!-- Contador -->
+<div id="releaseDate">For start COOLING your FUCKING WORLD</div>
 <div id="countdown"></div>
+
+<!-- DIRECTORS -->
+<div id="directors">
+
+  <button id="directorsBtn">DIRECTORS</button>
+
+ <div id="directorsMenu">
+  <a href="harlem.html" class="directorOption">HARLEM</a>
+  <a href="dann.html" class="directorOption">DANN</a>
+</div>
+
+</div>
 
 <script>
 const logo = document.getElementById('logoVideo');
@@ -122,23 +170,48 @@ const background = document.getElementById('backgroundVideo');
 const releaseDate = document.getElementById('releaseDate');
 const lettersImage = document.getElementById('lettersImage');
 const countdown = document.getElementById('countdown');
+const directors = document.getElementById('directors');
+const directorsBtn = document.getElementById('directorsBtn');
+const directorsMenu = document.getElementById('directorsMenu');
+
 
 // Fade-in inicial de la imagen PNG
 window.addEventListener('load', () => {
     lettersImage.style.opacity = 1;
 });
 
+
+// Al hacer click en el logo
+logo.addEventListener('click', () => {
+    logo.style.transform = 'scale(3.5)';
+    logo.style.opacity = 0;
+
+    lettersImage.style.opacity = 0; // fade-out
+
+    setTimeout(() => {
+        logo.style.display = 'none';
+        background.style.display = 'block';
+        releaseDate.style.display = 'block';
+        directors.classList.add('show');
+        startCountdown(); 
+    }, 1000);
+});
+
+directorsBtn.addEventListener('click', () => {
+    directorsMenu.classList.toggle('show');
+});
+
 // Contador regresivo hasta 19 de diciembre 2025 7pm
 function startCountdown() {
     countdown.style.display = 'block';
-    const targetDate = new Date("December 19, 2025 19:00:00").getTime();
+    const targetDate = new Date("January 9, 2026 19:00:00").getTime();
 
     const interval = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
 
         if (distance < 0) {
-            countdown.textContent = "CHECK HOW WE COOL THE WORLD";
+            countdown.textContent = "🎉 Released!";
             clearInterval(interval);
             return;
         }
@@ -148,25 +221,9 @@ function startCountdown() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        countdown.textContent = `${days}d    ${hours}h    ${minutes}m   ${seconds}s`; LEFT
-    }, 1000) ; 
-}
-
-// Al hacer click en el logo
-logo.addEventListener('click', () => {
-    logo.style.transform = 'scale(3)';
-    logo.style.opacity = 0;
-
-
-    lettersImage.style.opacity = 0; // fade-out
-
-    setTimeout(() => {
-        logo.style.display = 'none';
-        background.style.display = 'block';
-        releaseDate.style.display = 'block';
-        startCountdown(); // Arrancar contador cuando aparece el fondo
+        countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
-});
+}
 </script>
 
 </body>
