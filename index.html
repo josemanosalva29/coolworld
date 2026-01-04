@@ -112,7 +112,7 @@ body, html {
     background: none;
     border: none;
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: 3px;
     cursor: pointer;
 }
@@ -123,6 +123,9 @@ body, html {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
+    display: flex;              /* 👈 */
+    flex-direction: column;     /* 👈 uno encima del otro */
+    align-items: center;
 }
 
 /* Menú visible */
@@ -136,6 +139,16 @@ body, html {
     margin: 8px 0;
     cursor: pointer;
     font-size: 13px;
+    
+    color: white;               /* blanco */
+    text-decoration: none;      /* sin underline */
+}
+
+.directorOption:visited,
+.directorOption:active,
+.directorOption:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .directorOption:hover {
@@ -144,16 +157,17 @@ body, html {
 
 #socialLinks {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-80%);
   display: flex;
-  gap: 30px;
+  gap: 10px;
   z-index: 5;
+  top: -6px;     /* 👈 sube/baja */
+  right: 600px;   /* 👈 mueve izquierda/derecha */
 }
 
+
 #socialLinks img {
-  width: 28px;
+  width: 23px;
   height: auto;
   opacity: 0.8;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -166,6 +180,50 @@ body, html {
 
 .hidden {
   display: none;
+}
+
+
+.icon.white img {
+  filter: invert(1);
+}
+
+#whatsappCta {
+    position: absolute;
+    bottom: 30px;
+    left: 10%;
+    transform: translateX(-50%);
+    
+    font-family: 'Made Tommy', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: white;
+    text-decoration: none;
+
+    animation: glowPulse 3s ease-in-out infinite;
+    z-index: 4;
+}
+
+/* glow animado */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 0px rgba(255,255,255,0.2);
+        opacity: 0.7;
+    }
+    50% {
+        text-shadow: 
+          0 0 8px rgba(255,255,255,0.8),
+          0 0 16px rgba(255,255,255,0.6);
+        opacity: 1;
+    }
+    100% {
+        text-shadow: 0 0 0px rgba(255,255,255,0.2);
+        opacity: 0.7;
+    }
+}
+
+/* hover sutil */
+#whatsappCta:hover {
+    opacity: 1;
 }
 
 </style>
@@ -262,7 +320,16 @@ function startCountdown() {
 }
 
 
+
 </script>
 
 </body>
+
+<a
+  href="https://wa.me/573145104534"
+  target="_blank"
+  id="whatsappCta"
+>
+  WE ARE LOOKING FOR FRESH TALENT
+</a>
 </html>

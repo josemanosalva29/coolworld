@@ -24,11 +24,13 @@ h1 {
     color: black;
 }
 
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 60px 60px;
+#videoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 SIEMPRE 3 por fila */
+  gap: 1px;
+  padding: 60px;
+  max-width: 2100px;
+  margin: 0 auto;
 }
 
 .video-thumb img {
@@ -36,21 +38,30 @@ h1 {
     cursor: pointer;
 }
 
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .hidden {
     display: none;
 }
 
 #videoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 🔥 SIEMPRE 3 por fila */
-  gap: 30px;
-  padding: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;              /* 🔥 solo 10px entre videos */
+    padding: 10px;          /* 🔥 margen exterior mínimo */
 }
 
 .video-thumb {
     cursor: pointer;
+}
+
+.video-thumb p {
+    display: none;
 }
 
 .video-thumb p {
@@ -138,12 +149,113 @@ h1 {
   overflow: hidden;
 }
 
+#socialLinks {
+  position: absolute;
+  transform: translateX(-80%);
+  display: none;
+  gap: 10px;
+  z-index: 5;
+  top: 88px;     /* 👈 sube/baja */
+  right: 1620px;   /* 👈 mueve izquierda/derecha */
+}
+
+
+#socialLinks img {
+  width: 23px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#socialLinks img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+#menuBtn {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+
+    font-family: 'Made Tommy', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+
+    color: black;
+    text-decoration: none;
+
+    z-index: 10;
+    cursor: pointer;
+}
+
+#menuBtn:hover {
+    opacity: 0.6;
+}
+
+.harlem-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;          /* espacio entre HARLEM y el ícono */
+    padding: 60px;
+}
+
+.harlem-header h1 {
+    padding: 0;         /* quitamos padding del h1 original */
+    margin: 0;
+    letter-spacing: 6px;
+}
+
+/* icono instagram */
+.ig-link img {
+    width: 18px;        /* tamaño del icono */
+    height: auto;
+    cursor: pointer;
+}
+
+
+#menuBtn:hover {
+    opacity: 0.6;
+}
+
+.harlem-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;          /* espacio entre HARLEM y el ícono */
+    padding: 60px;
+}
+
+.harlem-header h1 {
+    padding: 0;         /* quitamos padding del h1 original */
+    margin: 0;
+    letter-spacing: 6px;
+}
+
+/* icono instagram */
+.ig-link img {
+    width: 18px;        /* tamaño del icono */
+    height: auto;
+    cursor: pointer;
+}
+
+
 </style>
 </head>
 
 <body>
 
-<h1>DANN</h1>
+<div class="harlem-header">
+  <h1>DANN</h1>
+
+  <a href="https://instagram.com/madebydann_"
+     target="_blank"
+     class="ig-link">
+    <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/instagram.svg" alt="Instagram">
+  </a>
+</div>
 
 <section id="videoGridView">
   <div id="videoGrid">
@@ -207,6 +319,12 @@ h1 {
     </iframe>
   </div>
 </section>
+
 <script src="dann.js"></script>
+
 </body>
+
+<a href="index.html" id="menuBtn">BACK</a>
+
+
 </html>
