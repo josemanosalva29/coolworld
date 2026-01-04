@@ -242,17 +242,22 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  .directorsGrid {
-    display: flex;
-    flex-direction: row;      /* 👈 una sola fila */
-    gap: 12px;
-    overflow-x: auto;         /* 👈 swipe horizontal */
-    padding: 0 12px;
+  #videoGrid {
+  
+    grid-template-columns: 1fr; 
+    
+    gap: 10px; 
+    padding: 10px;
+    max-width: 100%;
   }
 
-  .directorsGrid video {
-    width: 80vw;              /* 👈 un video grande */
-    flex-shrink: 0;
+  .harlem-header {
+    padding: 30px 10px; /* Reducimos padding del header en móvil */
+    justify-content: center; /* Opcional: centra el título en móvil */
+  }
+
+  .iframe-wrapper {
+    width: 90%; /* Que el reproductor sea más ancho en pantallas pequeñas */
   }
 }
 
