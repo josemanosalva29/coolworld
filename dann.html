@@ -41,14 +41,19 @@ h1 {
 }
 
 #videoGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-    padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 SIEMPRE 3 por fila */
+  gap: 30px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.video-thumb {
-    cursor: pointer;
+.video-thumb img {
+  width: 100%;
+  max-width: 320px;   /* 🔥 controla el tamaño real */
+  display: block;
+  margin: 0 auto;
 }
 
 .video-thumb p {
