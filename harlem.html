@@ -26,11 +26,13 @@ h1 {
     color: black;
 }
 
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 60px 60px;
+#videoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 SIEMPRE 3 por fila */
+  gap: 30px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .video-thumb img {
@@ -95,6 +97,14 @@ h1 {
   position: relative;
 }
 
+body {
+  margin: 0;
+  background: white;
+  color: black;
+  font-family: 'Made Tommy', sans-serif;
+  overflow-y: auto; /* 🔥 permite scroll vertical */
+}
+
 </style>
 </head>
 
@@ -109,7 +119,7 @@ h1 {
          data-video="trappluggbounce"
          data-youtube="YcJaGd4tZt0">
       <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Thumbnail1.png">
-      <p>TRAP PLUGG BOUNCE</p>
+      <p>TRAP PLUGG & BOUNCE</p>
     </div>
 
     <div class="video-thumb"
@@ -117,6 +127,13 @@ h1 {
          data-youtube="qD0QKZuxAvM">
       <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Thumbnail2.jpg">
       <p>PARDMIN</p>
+    </div>
+
+     <div class="video-thumb"
+         data-video="inside-the-shadow"
+         data-youtube="shswUA_m-Nk?si=vwiKc8g6T3u0e9aS">
+      <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Thumbnail2.jpg">
+      <p>INSIDE THE SHADOW</p>
     </div>
 
   </div>
@@ -136,5 +153,6 @@ h1 {
   </div>
 </section>
 <script src="harlem.js"></script>
+
 </body>
 </html>
