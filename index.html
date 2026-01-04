@@ -49,6 +49,12 @@ body, html {
     z-index: 1;
     pointer-events: none;
 }
+
+#backgroundVideo.show {
+  opacity: 1;
+}
+
+
 #releaseDate {
     position: absolute;
     top: 50%;
@@ -362,35 +368,33 @@ body, html {
 }
 
 @media (max-width: 768px) {
-
   #topMenu {
-    position: fixed;          /* mejor que absolute en mobile */
-    top: 20px;
+    position: fixed;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
 
-    flex-direction: column;
-    align-items: center;      /* 👈 CLAVE */
-    gap: 4px;                 /* 👈 CLAVE */
-
-    width: max-content;
+    display: flex;
+    flex-direction: row;     /* 👈 uno al lado del otro */
+    gap: 16px;               /* 👈 ajusta qué tan pegados */
+    align-items: center;
   }
 
-  #directors,
+  #directorsBtn,
   #contactBtn {
-    position: static;
-    transform: none;
-    margin: 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 0;
   }
-
 }
 
 </style>
 </head>
 <body>
 
-<video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop></video>
-<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Forwebsite.mp4" autoplay muted loop></video>
+<video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop playsinline></video>
+<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Forwebsite.mp4" autoplay muted loop playsinline></video>
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 <div id="releaseDate">For start COOLING your FUCKING WORLD</div>
 <div id="countdown"></div>
@@ -455,6 +459,10 @@ logo.addEventListener('click', () => {
     logo.style.transform = 'scale(3.5)';
     logo.style.opacity = '0';
     lettersImage.style.opacity = 0;
+
+    background.currentTime = 0;
+    background.play();                    // 👈 FUERZA PLAY
+    background.classList.add('show');   
 
     // esperar a que termine la animación del logo
     setTimeout(() => {
