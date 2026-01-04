@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>We Cool The World</title>
@@ -90,10 +94,6 @@ body, html {
 }
 
 #directors {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
     font-family: 'Made Tommy', sans-serif;
     z-index: 4;
     text-align: center;
@@ -109,6 +109,7 @@ body, html {
 
 /* Botón */
 #directorsBtn {
+    font-family: 'Golos Text', sans-serif;
     background: none;
     border: none;
     color: rgb(255, 255, 255);
@@ -161,8 +162,8 @@ body, html {
   display: flex;
   gap: 10px;
   z-index: 5;
-  top: -6px;     /* 👈 sube/baja */
-  right: 600px;   /* 👈 mueve izquierda/derecha */
+  top: 30px;     /* 👈 sube/baja */
+  right: 1500px;   /* 👈 mueve izquierda/derecha */
 }
 
 
@@ -193,7 +194,7 @@ body, html {
     left: 10%;
     transform: translateX(-50%);
     
-    font-family: 'Made Tommy', sans-serif;
+    font-family: 'COOLVETICA', sans-serif;
     font-size: 16px;
     letter-spacing: 3px;
     color: white;
@@ -226,6 +227,40 @@ body, html {
     opacity: 1;
 }
 
+#topMenu {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+
+    z-index: 4;
+}
+
+/* CONTACT US */
+#contactBtn {
+  font-family: 'Golos Text', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: white;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* evitar azul después de click */
+#contactBtn:visited {
+    color: white;
+}
+
+/* hover sutil */
+#contactBtn:hover {
+    text-decoration: underline;
+}
+
 </style>
 </head>
 <body>
@@ -236,14 +271,26 @@ body, html {
 <div id="releaseDate">For start COOLING your FUCKING WORLD</div>
 <div id="countdown"></div>
 
-<!-- DIRECTORS -->
-<div id="directors">
+<!-- MENU -->
+<div id="topMenu">
 
-  <button id="directorsBtn">DIRECTORS</button>
+  <div id="directors">
+    <button id="directorsBtn">DIRECTORS</button>
 
- <div id="directorsMenu">
-  <a href="harlem.html" class="directorOption">HARLEM</a>
-  <a href="dann.html" class="directorOption">DANN</a>
+    <div id="directorsMenu">
+      <a href="harlem.html" class="directorOption">HARLEM</a>
+      <a href="dann.html" class="directorOption">DANN</a>
+    </div>
+  </div>
+
+  <a
+    href="https://ig.me/m/wecooltheworld"
+    target="_blank"
+    id="contactBtn"
+  >
+    CONTACT&nbsp;US
+  </a>
+
 </div>
 
 <div id="socialLinks" class="hidden">
