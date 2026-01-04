@@ -460,9 +460,7 @@ logo.addEventListener('click', () => {
     logo.style.opacity = '0';
     lettersImage.style.opacity = 0;
 
-    background.currentTime = 0;
-    background.play();                    // 👈 FUERZA PLAY
-    background.classList.add('show');   
+
 
     // esperar a que termine la animación del logo
     setTimeout(() => {
@@ -484,6 +482,10 @@ logo.addEventListener('click', () => {
         startCountdown();
 
     }, 1000); // ⬅️ mismo tiempo del logo
+
+        background.currentTime = 0;
+        background.play();                    // 👈 FUERZA PLAY
+        background.classList.add('show');   
 });
 
 directorsBtn.addEventListener('click', () => {
