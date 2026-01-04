@@ -37,16 +37,18 @@ body, html {
 
 #backgroundVideo {
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    transform: translate(0%, 0%);
     object-fit: cover;
-    display: none;
-    z-index: 1;
-}
 
+    opacity: 0;
+    transition: opacity 0.8s ease;
+
+    z-index: 1;
+    pointer-events: none;
+}
 #releaseDate {
     position: absolute;
     top: 50%;
@@ -160,7 +162,7 @@ body, html {
   position: absolute;
   transform: translateX(-80%);
   display: flex;
-  gap: 10px;
+  gap: 15px;
   z-index: 5;
   top: 30px;     /* 👈 sube/baja */
   right: 1500px;   /* 👈 mueve izquierda/derecha */
@@ -261,6 +263,22 @@ body, html {
     text-decoration: underline;
 }
 
+#whiteFlash {
+    position: fixed;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.4s ease;
+}
+
+/* cuando se activa */
+#whiteFlash.show {
+    opacity: 1;
+}
+
+
 </style>
 </head>
 <body>
@@ -270,6 +288,8 @@ body, html {
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 <div id="releaseDate">For start COOLING your FUCKING WORLD</div>
 <div id="countdown"></div>
+<div id="whiteFlash"></div>
+
 
 <!-- MENU -->
 <div id="topMenu">
@@ -324,18 +344,32 @@ window.addEventListener('load', () => {
 
 // Al hacer click en el logo
 logo.addEventListener('click', () => {
+
+    // animación del logo
     logo.style.transform = 'scale(3.5)';
-    logo.style.opacity = 0;
+    logo.style.opacity = '0';
+    lettersImage.style.opacity = 0;
 
-    lettersImage.style.opacity = 0; // fade-out
-
+    // esperar a que termine la animación del logo
     setTimeout(() => {
-        logo.style.display = 'none';
-        background.style.display = 'block';
+
+        // FLASH BLANCO
+        whiteFlash.classList.add('show');
+
+        // mostrar video (aún tapado por el flash)
+        background.style.opacity = 1;
+
+        // quitar flash rápidamente
+        setTimeout(() => {
+            whiteFlash.classList.remove('show');
+        }, 120); // 🔥 duración del flash
+
+        // mostrar UI
         releaseDate.style.display = 'block';
         directors.classList.add('show');
-        startCountdown(); 
-    }, 1000);
+        startCountdown();
+
+    }, 1000); // ⬅️ mismo tiempo del logo
 });
 
 directorsBtn.addEventListener('click', () => {
