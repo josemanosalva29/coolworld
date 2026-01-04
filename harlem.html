@@ -221,6 +221,21 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .directorsGrid {
+    display: flex;
+    flex-direction: row;      /* 👈 una sola fila */
+    gap: 12px;
+    overflow-x: auto;         /* 👈 swipe horizontal */
+    padding: 0 12px;
+  }
+
+  .directorsGrid video {
+    width: 80vw;              /* 👈 un video grande */
+    flex-shrink: 0;
+  }
+}
+
 </style>
 </head>
 
