@@ -116,33 +116,28 @@ body {
   transition: filter 0.3s ease;
 }
 
-/* Oscurecer imagen */
-.video-thumb:hover img {
+/* Oscurecer SOLO esta miniatura */
+.thumb-wrapper:hover img {
   filter: brightness(60%);
 }
 
-/* Ícono play */
+/* Play icon */
 .play-icon {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
+  inset: 0;                 /* 🔥 clave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 48px;
   color: white;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
-/* Mostrar play al hover */
-.video-thumb:hover .play-icon {
+/* Mostrar icono SOLO en esta miniatura */
+.thumb-wrapper:hover .play-icon {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.thumb-wrapper {
-  position: relative; /* 🔥 ESTA ES LA CLAVE */
-  overflow: hidden;
 }
 
 </style>
