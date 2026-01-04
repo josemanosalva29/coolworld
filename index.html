@@ -142,7 +142,31 @@ body, html {
     text-decoration: underline;
 }
 
+#socialLinks {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  z-index: 5;
+}
 
+#socialLinks img {
+  width: 28px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#socialLinks img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
 
 </style>
 </head>
@@ -162,6 +186,16 @@ body, html {
  <div id="directorsMenu">
   <a href="harlem.html" class="directorOption">HARLEM</a>
   <a href="dann.html" class="directorOption">DANN</a>
+</div>
+
+<div id="socialLinks" class="hidden">
+  <a href="https://www.instagram.com/wecooltheworld" target="_blank" class="icon white">
+    <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/instagram.svg" alt="Instagram">
+  </a>
+
+  <a href="https://www.youtube.com/@wecooltheworld" target="_blank" class="icon white">
+    <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/youtube.svg" alt="YouTube">
+  </a>
 </div>
 
 </div>
