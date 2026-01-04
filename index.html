@@ -476,6 +476,10 @@ logo.addEventListener('click', () => {
             whiteFlash.classList.remove('show');
         }, 120); // 🔥 duración del flash
 
+        background.currentTime = 0;
+        background.play();                    // 👈 FUERZA PLAY
+        background.classList.add('show');   
+
         // mostrar UI
         releaseDate.style.display = 'block';
         directors.classList.add('show');
@@ -483,9 +487,7 @@ logo.addEventListener('click', () => {
 
     }, 1000); // ⬅️ mismo tiempo del logo
 
-        background.currentTime = 0;
-        background.play();                    // 👈 FUERZA PLAY
-        background.classList.add('show');   
+
 });
 
 directorsBtn.addEventListener('click', () => {
