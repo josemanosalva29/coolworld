@@ -105,6 +105,41 @@ body {
   overflow-y: auto; /* 🔥 permite scroll vertical */
 }
 
+.thumb-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb-wrapper img {
+  width: 100%;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+/* Oscurecer imagen */
+.video-thumb:hover img {
+  filter: brightness(60%);
+}
+
+/* Ícono play */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  font-size: 48px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Mostrar play al hover */
+.video-thumb:hover .play-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 </style>
 </head>
 
@@ -119,6 +154,7 @@ body {
          data-video="trappluggbounce"
          data-youtube="YcJaGd4tZt0">
       <img src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/Thumbnail1.png">
+      <div class="play-icon">▶</div>
       <p>TRAP PLUGG & BOUNCE</p>
     </div>
 
