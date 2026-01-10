@@ -60,6 +60,7 @@ body, html {
 
 #backgroundVideo-mobile {
   display: none;
+
 }
 
 @media (max-width: 768px) {
@@ -517,39 +518,35 @@ window.addEventListener('load', () => {
 // Al hacer click en el logo
 logo.addEventListener('click', () => {
 
-    // animación del logo
-    logo.style.transform = 'scale(3.5)';
-    logo.style.opacity = '0';
-    lettersImage.style.opacity = 0;
+  // animación del logo
+  logo.style.transform = 'scale(3.5)';
+  logo.style.opacity = '0';
+  lettersImage.style.opacity = 0;
 
+  setTimeout(() => {
 
+    whiteFlash.classList.add('show');
 
-    // esperar a que termine la animación del logo
     setTimeout(() => {
+      whiteFlash.classList.remove('show');
+    }, 120);
 
-        // FLASH BLANCO
-        whiteFlash.classList.add('show');
+    // mostrar video
+    background.style.opacity = 1;
+    background.classList.add('show');
+    background.currentTime = 0;
 
-        // mostrar video (aún tapado por el flash)
-        background.style.opacity = 1;
+    // 🔥 PLAY SEGURO PARA MOBILE
+    background.play().catch(() => {
+      console.log('Play bloqueado, pero interacción detectada');
+    });
 
-        // quitar flash rápidamente
-        setTimeout(() => {
-            whiteFlash.classList.remove('show');
-        }, 120); // 🔥 duración del flash
+    // UI
+    releaseDate.style.display = 'block';
+    directors.classList.add('show');
+    startCountdown();
 
-        background.currentTime = 0;
-        background.play();                    // 👈 FUERZA PLAY
-        background.classList.add('show');   
-
-        // mostrar UI
-        releaseDate.style.display = 'block';
-        directors.classList.add('show');
-        startCountdown();
-
-    }, 1000); // ⬅️ mismo tiempo del logo
-
-
+  }, 1000);
 });
 
 directorsBtn.addEventListener('click', () => {
