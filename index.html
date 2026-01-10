@@ -432,7 +432,13 @@ body, html {
 <body>
 
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop playsinline poster></video>
-<video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE2.mp4" autoplay muted loop playsinline></video>
+<video
+  id="backgroundVideo"
+  muted
+  loop
+  playsinline
+  preload="metadata"
+></video>
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 <a
   href="https://linktw.in/Sensjm"
@@ -488,6 +494,11 @@ const countdown = document.getElementById('countdown');
 const directors = document.getElementById('directors');
 const directorsBtn = document.getElementById('directorsBtn');
 const directorsMenu = document.getElementById('directorsMenu');
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+background.src = isMobile
+  ? 'https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE3LOW.mp4'
+  : 'https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE2.mp4';
 
 
 // Fade-in inicial de la imagen PNG
@@ -499,38 +510,33 @@ window.addEventListener('load', () => {
 // Al hacer click en el logo
 logo.addEventListener('click', () => {
 
-    // 🔹 animación del logo
+    // animación del logo
     logo.style.transform = 'scale(3.5)';
     logo.style.opacity = '0';
     lettersImage.style.opacity = 0;
 
-    // 🔹 esperar a que termine la animación del logo
     setTimeout(() => {
 
-        // FLASH BLANCO
+        // flash blanco
         whiteFlash.classList.add('show');
 
-        // mostrar video (invisible aún por el flash)
-        background.classList.add('show');
+        // preparar video
         background.currentTime = 0;
+        background.classList.add('show');
 
-        // ▶️ PLAY — permitido porque viene del click
         background.play().catch(err => {
             console.log('Play bloqueado:', err);
         });
 
-        // quitar flash rápidamente
         setTimeout(() => {
             whiteFlash.classList.remove('show');
         }, 120);
 
-        // mostrar UI
         releaseDate.style.display = 'block';
         directors.classList.add('show');
         startCountdown();
 
-    }, 1000); // mismo tiempo de la animación del logo
-
+    }, 1000);
 });
 
 directorsBtn.addEventListener('click', () => {
