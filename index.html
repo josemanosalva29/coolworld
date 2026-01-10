@@ -62,7 +62,7 @@ body, html {
     transform: translate(-50%, -50%);
     font-family: 'Made Tommy', sans-serif;
     font-weight: 800;
-    font-size: 30px;
+    font-size: 28px;
     color: #ffffff;
     display: none;
     opacity: 0;
@@ -71,6 +71,24 @@ body, html {
     text-align: center;
     z-index: 3;
 }
+#releaseDate {
+  mix-blend-mode: difference;
+  color: white;               /* base para que invierta */
+  text-decoration: none;
+  cursor: pointer;
+}
+#releaseDate::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
 
 #lettersImage {
     position: absolute;
@@ -203,7 +221,7 @@ body, html {
 #whatsappCta {
     position: absolute;
     bottom: 30px;
-    left: 10%;
+    left: 15%;
     transform: translateX(-50%);
     
     font-family: 'COOLVETICA', sans-serif;
