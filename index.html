@@ -54,6 +54,23 @@ body, html {
   opacity: 1;
 }
 
+#backgroundVideo-desktop {
+  display: block;
+}
+
+#backgroundVideo-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #backgroundVideo-desktop {
+    display: none;
+  }
+
+  #backgroundVideo-mobile {
+    display: block;
+  }
+}
 
 #releaseDate {
     position: absolute;
@@ -433,6 +450,7 @@ body, html {
 
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop playsinline poster></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE2.mp4" autoplay muted loop playsinline></video>
+<video id="backgroundVideo-mobile" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE3LOW.mp4" autoplay muted loop playsinline></video>
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 <a
   href="https://linktw.in/Sensjm"
