@@ -433,7 +433,6 @@ body, html {
 
 <video id="logoVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/logo.mp4" autoplay muted loop playsinline poster></video>
 <video id="backgroundVideo" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE2.mp4" autoplay muted loop playsinline></video>
-<video id="backgroundVideo-mobile" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/WEBSITE3LOW.mp4" autoplay muted loop playsinline></video>
 <img id="lettersImage" src="https://pub-8b89e340aca94b0e95ff9be37707f5e6.r2.dev/public/wecooltheworld.png" alt="Letras PNG">
 <a
   href="https://linktw.in/Sensjm"
@@ -500,38 +499,37 @@ window.addEventListener('load', () => {
 // Al hacer click en el logo
 logo.addEventListener('click', () => {
 
-    // animación del logo
+    // 🔹 animación del logo
     logo.style.transform = 'scale(3.5)';
     logo.style.opacity = '0';
     lettersImage.style.opacity = 0;
 
-
-
-    // esperar a que termine la animación del logo
+    // 🔹 esperar a que termine la animación del logo
     setTimeout(() => {
 
         // FLASH BLANCO
         whiteFlash.classList.add('show');
 
-        // mostrar video (aún tapado por el flash)
-        background.style.opacity = 1;
+        // mostrar video (invisible aún por el flash)
+        background.classList.add('show');
+        background.currentTime = 0;
+
+        // ▶️ PLAY — permitido porque viene del click
+        background.play().catch(err => {
+            console.log('Play bloqueado:', err);
+        });
 
         // quitar flash rápidamente
         setTimeout(() => {
             whiteFlash.classList.remove('show');
-        }, 120); // 🔥 duración del flash
-
-        background.currentTime = 0;
-        background.play();                    // 👈 FUERZA PLAY
-        background.classList.add('show');   
+        }, 120);
 
         // mostrar UI
         releaseDate.style.display = 'block';
         directors.classList.add('show');
         startCountdown();
 
-    }, 1000); // ⬅️ mismo tiempo del logo
-
+    }, 1000); // mismo tiempo de la animación del logo
 
 });
 
